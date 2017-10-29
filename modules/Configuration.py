@@ -218,6 +218,8 @@ def get_notification_config():
         for conf in ['slack_token', 'slack_channels', 'slack_username']:
             notify_conf[conf] = get('notifications', conf)
         notify_conf['slack_channels'] = notify_conf['slack_channels'].split(',')
+        if not notify_conf['slack_username']:
+            notify_conf['slack_username'] = 'Slack API Tester'
 
     if notify_conf['telegram']:
         for conf in ['telegram_bot_id', 'telegram_chat_ids']:
